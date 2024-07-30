@@ -1,0 +1,38 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach to node",
+      "type": "node",
+      "request": "attach",
+      "restart": true,
+      "port": 9229
+    },
+    {
+      "name": "Server",
+      "type": "node",
+      "request": "launch",
+      "envFile": "${workspaceFolder}/server/.env",
+      "program": "${workspaceFolder}/server/src/Startup.ts",
+      "preLaunchTask": "tsc: watch - server/tsconfig.json",
+      "outFiles": ["${workspaceFolder}/server/build/**/*.js"]
+    },
+    {
+      "name": "Debug Server Jest Tests",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/server",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceFolder}/server/node_modules/.bin/jest",
+        "--runInBand"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
+    },
+  ]
+}

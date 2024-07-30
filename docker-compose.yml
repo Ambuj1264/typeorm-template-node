@@ -1,0 +1,56 @@
+version: "3.8"
+services:
+  postgressIVR:
+    image: postgres:14.1-alpine
+    expose:
+      - "5433"
+    ports:
+      - "5433:5433"
+    container_name: postgressIVR
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ivr_microservice
+    volumes:
+      - ./db/:/var/lib/postgresql/data
+    command: -p 5433
+  fe_service:
+    build:
+      dockerfile: Dockerfile
+      context: ./fe_service
+    container_name: fe_service
+    ports:
+      - "8001:8001"
+    restart: always
+    depends_on:
+      - "postgressIVR"
+    volumes:
+      - .:/app
+      - /app/fe_service/node_modules
+
+    env_file:
+      - ./fe_service/env.yaml
+  ivr_service:
+    build:
+      dockerfile: Dockerfile
+      context: ./ivr_service
+    container_name: ivr_service
+    ports:
+      - "8002:8002"
+    restart: always
+    depends_on:
+      - "postgressIVR"
+    volumes:
+      - .:/app
+      - /app/ivr_service/node_modules
+    env_file:
+      - ./ivr_service/env.yaml
+  nginx-proxy:
+    build:
+      dockerfile: Dockerfile
+      context: ./proxy-server
+    depends_on:
+      - fe_service
+      - ivr_service
+    ports:
+      - 81:81

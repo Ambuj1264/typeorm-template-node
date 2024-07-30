@@ -1,0 +1,2 @@
+"Operation","ClientNumber","EmployeeNumber","DateOfService","TotalHours","ClockIn","ClockOut","ServiceLine","ServiceCategory","ServiceCode","AllocationRatio","Activities","Notes","ClientAttendance","ReasonCode","LocationId","PlaceOfService","SvcContactMethod","ServiceType","PayorName","UpdateReason","TimesheetNumber","TransportType"
+"A",,,"2023-09-20T16:30:04.300Z","0.12","2023-09-20T16:30:04.300Z","2023-09-20T16:37:18.248Z",,,,"1:1",", ","false","","","","","","",,"",1,""

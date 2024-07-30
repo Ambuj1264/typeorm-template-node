@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "rootDirs": ["src"],
+    "outDir": "dist",
+    "lib": ["es2020"],
+    "target": "es2020",
+    "module": "Node16",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "strictNullChecks": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noEmit": true,
+    "emitDecoratorMetadata": true,
+    "types": ["node"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

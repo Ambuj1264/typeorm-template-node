@@ -1,0 +1,609 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "IVR CALLING PROGRAM",
+    "description": "api-docs"
+  },
+
+  "schemes": ["https", "http"],
+
+  "host": "ivr-microservice-api.devtrust.biz",
+
+  "basepath": "/",
+  "tags": [
+    {
+      "name": "IVR Calling",
+      "description": "end point"
+    }
+  ],
+
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "API-DOCS "
+    }
+  },
+  "security": [
+    {
+      "Authorization": []
+    }
+  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/createAgency": {
+      "post": {
+        "tags": ["AGENCY API"],
+        "summary": "This Api creates Employee and his login",
+        "description": "it takes given  payload and give it to response ",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "EMAIL_ID": {
+                  "type": "string"
+                },
+                "POSTAL_CODE": {
+                  "type": "string"
+                },
+                "AGENCY_NAME": {
+                  "type": "string"
+                },
+                "SHORT_NAME": {
+                  "type": "string"
+                },
+                "FEDERAL_TAX_ID": {
+                  "type": "string"
+                },
+                "PRY_CONTACT_REF_ID": {
+                  "type": "string"
+                },
+                "ADDR_HOUSE_NO": {
+                  "type": "string"
+                },
+                "ADDR_LINE1": {
+                  "type": "string"
+                },
+                "ADDR_LOCALITY": {
+                  "type": "string"
+                },
+                "ADDR_CITY": {
+                  "type": "string"
+                },
+                "ADDR_STATE": {
+                  "type": "string"
+                },
+                "ADDR_COUNTRY": {
+                  "type": "string"
+                },
+                "PRI_PHONE_NUM": {
+                  "type": "string"
+                },
+                "ALT_PHONE_NUM": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "EMAIL_ID": "afdaffy@fhalhy",
+                    "AGENCY_NAME": "devtrust",
+                    "SHORT_NAME": "DT",
+                    "FEDERAL_TAX_ID": "1234",
+                    "PRY_CONTACT_REF_ID": "123",
+                    "ADDR_HOUSE_NO": "101",
+                    "ADDR_LINE1": "Kamta Lko",
+                    "ADDR_LINE2": "gomtinagar",
+                    "ADDR_LOCALITY": "Lko",
+                    "ADDR_CITY": "lko",
+                    "ADDR_STATE": "up",
+                    "ADDR_COUNTRY": "india",
+                    "POSTAL_CODE": "20223",
+                    "PRI_PHONE_NUM": "82729437",
+                    "ALT_PHONE_NUM": "ALT_PHONE_NUM",
+                    "PASSCODE": null,
+                    "id": "06a96652-552d-4181-a848-4f31d4a0622b",
+                    "createdOn": "2023-05-31T09:45:55.514Z",
+                    "updatedOn": "2023-05-31T09:45:55.514Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "succes": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "result": {
+                  "type": "object",
+                  "example": "something went weong"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getAgency": {
+      "post": {
+        "tags": ["AGENCY API"],
+        "summary": "This Api gives get  Employee data ",
+        "description": "please provide in payload only id ",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+
+                "result": {
+                  "type": "object",
+                  "example": {
+                    "EMAIL_ID": "afdaffy@fhalhy",
+                    "AGENCY_NAME": "devtrust",
+                    "SHORT_NAME": "DT",
+                    "FEDERAL_TAX_ID": "1234",
+                    "PRY_CONTACT_REF_ID": "123",
+                    "ADDR_HOUSE_NO": "101",
+                    "ADDR_LINE1": "Kamta Lko",
+                    "ADDR_LINE2": "gomtinagar",
+                    "ADDR_LOCALITY": "Lko",
+                    "ADDR_CITY": "lko",
+                    "ADDR_STATE": "up",
+                    "ADDR_COUNTRY": "india",
+                    "POSTAL_CODE": "20223",
+                    "PRI_PHONE_NUM": "82729437",
+                    "ALT_PHONE_NUM": "ALT_PHONE_NUM",
+                    "PASSCODE": null,
+                    "id": "06a96652-552d-4181-a848-4f31d4a0622b",
+                    "createdOn": "2023-05-31T09:45:55.514Z",
+                    "updatedOn": "2023-05-31T09:45:55.514Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "message": {
+                  "type": "string",
+                  "example": "error message"
+                },
+                "result": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getAllAgency": {
+      "post": {
+        "tags": ["AGENCY API"],
+        "summary": "This Api gives All the data of  Employee",
+        "description": "",
+
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+
+                "result": {
+                  "type": "object",
+                  "example": [
+                    {
+                      "EMAIL_ID": "afdaffy@fhalhy",
+                      "AGENCY_NAME": "devtrust",
+                      "SHORT_NAME": "DT",
+                      "FEDERAL_TAX_ID": "1234",
+                      "PRY_CONTACT_REF_ID": "123",
+                      "ADDR_HOUSE_NO": "101",
+                      "ADDR_LINE1": "Kamta Lko",
+                      "ADDR_LINE2": "gomtinagar",
+                      "ADDR_LOCALITY": "Lko",
+                      "ADDR_CITY": "lko",
+                      "ADDR_STATE": "up",
+                      "ADDR_COUNTRY": "india",
+                      "POSTAL_CODE": "20223",
+                      "PRI_PHONE_NUM": "82729437",
+                      "ALT_PHONE_NUM": "ALT_PHONE_NUM",
+                      "PASSCODE": null,
+                      "id": "06a96652-552d-4181-a848-4f31d4a0622b",
+                      "createdOn": "2023-05-31T09:45:55.514Z",
+                      "updatedOn": "2023-05-31T09:45:55.514Z"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "message": {
+                  "type": "string",
+                  "example": "error message"
+                },
+                "result": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deleteAgency": {
+      "post": {
+        "tags": ["AGENCY API"],
+        "summary": "This api deletes Agency ",
+        "description": "it takes id only and and id is an uuid",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "deleted successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "succes": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "result": {
+                  "type": "object",
+                  "example": "deleted successfully"
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad Request",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "succes": {
+                "type": "boolean",
+                "example": false
+              },
+              "result": {
+                "type": "object",
+                "example": "something went weong"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateAgency": {
+      "post": {
+        "tags": ["AGENCY API"],
+        "summary": "This Api update the  Employee",
+        "description": "it takes given  payload and give it to response ",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "EMAIL_ID": {
+                  "type": "string"
+                },
+                "POSTAL_CODE": {
+                  "type": "string"
+                },
+                "AGENCY_NAME": {
+                  "type": "string"
+                },
+                "SHORT_NAME": {
+                  "type": "string"
+                },
+                "FEDERAL_TAX_ID": {
+                  "type": "string"
+                },
+                "PRY_CONTACT_REF_ID": {
+                  "type": "string"
+                },
+                "ADDR_HOUSE_NO": {
+                  "type": "string"
+                },
+                "ADDR_LINE1": {
+                  "type": "string"
+                },
+                "ADDR_LOCALITY": {
+                  "type": "string"
+                },
+                "ADDR_CITY": {
+                  "type": "string"
+                },
+                "ADDR_STATE": {
+                  "type": "string"
+                },
+                "ADDR_COUNTRY": {
+                  "type": "string"
+                },
+                "PRI_PHONE_NUM": {
+                  "type": "string"
+                },
+                "ALT_PHONE_NUM": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "EMAIL_ID": "afdaffy@fhalhy",
+                    "AGENCY_NAME": "devtrust",
+                    "SHORT_NAME": "DT",
+                    "FEDERAL_TAX_ID": "1234",
+                    "PRY_CONTACT_REF_ID": "123",
+                    "ADDR_HOUSE_NO": "101",
+                    "ADDR_LINE1": "Kamta Lko",
+                    "ADDR_LINE2": "gomtinagar",
+                    "ADDR_LOCALITY": "Lko",
+                    "ADDR_CITY": "lko",
+                    "ADDR_STATE": "up",
+                    "ADDR_COUNTRY": "india",
+                    "POSTAL_CODE": "20223",
+                    "PRI_PHONE_NUM": "82729437",
+                    "ALT_PHONE_NUM": "ALT_PHONE_NUM",
+                    "PASSCODE": null,
+                    "id": "06a96652-552d-4181-a848-4f31d4a0622b",
+                    "createdOn": "2023-05-31T09:45:55.514Z",
+                    "updatedOn": "2023-05-31T09:45:55.514Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "succes": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "result": {
+                  "type": "object",
+                  "example": "something went weong"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/filterAgency": {
+      "post": {
+        "tags": ["AGENCY API"],
+        "summary": "This Api gives get  serach section where you can check out data by giving sort things  ",
+        "description": "this api is filter the Employee name email pascode etch ",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "search": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+
+                "result": {
+                  "type": "object",
+                  "example": {
+                    "EMAIL_ID": "afdaffy@fhalhy",
+                    "AGENCY_NAME": "devtrust",
+                    "SHORT_NAME": "DT",
+                    "FEDERAL_TAX_ID": "1234",
+                    "PRY_CONTACT_REF_ID": "123",
+                    "ADDR_HOUSE_NO": "101",
+                    "ADDR_LINE1": "Kamta Lko",
+                    "ADDR_LINE2": "gomtinagar",
+                    "ADDR_LOCALITY": "Lko",
+                    "ADDR_CITY": "lko",
+                    "ADDR_STATE": "up",
+                    "ADDR_COUNTRY": "india",
+                    "POSTAL_CODE": "20223",
+                    "PRI_PHONE_NUM": "82729437",
+                    "ALT_PHONE_NUM": "ALT_PHONE_NUM",
+                    "PASSCODE": null,
+                    "id": "06a96652-552d-4181-a848-4f31d4a0622b",
+                    "createdOn": "2023-05-31T09:45:55.514Z",
+                    "updatedOn": "2023-05-31T09:45:55.514Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "message": {
+                  "type": "string",
+                  "example": "error message"
+                },
+                "result": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getEmployeeByAgency": {
+      "post": {
+        "tags": ["AGENCY API"],
+        "summary": "This Api gives us emploeyee data who is associated with Employee ",
+        "description": "please provide in payload only id is in uuid formate id is employee Id",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request body",
+            "required": true,
+            "schema": {
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+
+                "result": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "message": {
+                  "type": "string",
+                  "example": "error message"
+                },
+                "result": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

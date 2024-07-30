@@ -1,0 +1,447 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "IVR CALLING PROGRAM",
+    "description": "api-docs"
+  },
+
+  "schemes": ["https", "http"],
+
+  "host": "ivr-microservice-api.devtrust.biz",
+
+  "basepath": "/",
+  "tags": [
+    {
+      "name": "IVR Calling",
+      "description": "end point"
+    }
+  ],
+
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "API-DOCS "
+    }
+  },
+  "security": [
+    {
+      "Authorization": []
+    }
+  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/whoami": {
+      "get": {
+        "tags": [" Check API "],
+        "summary": "This Api for testing purpose ",
+        "description": "This Api for testing purpose",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "object",
+                  "example": "/FEservice : I am FE Service"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "succes": false,
+                    "result": "data is not found"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/signup": {
+      "post": {
+        "tags": [" SIGNUP "],
+        "summary": "This Api crate user",
+        "description": "it takes given  payload and give it to response ",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "required": true
+                },
+                "password": {
+                  "type": "string",
+                  "required": true
+                },
+                "roleId": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "id": "59a1ed7b-d0a4-4641-a850-1b71b3c69183",
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFraGlsZXNoYS5wQGRldnRydXN0LmJpeiIsImlkIjoiNTlhMWVkN2ItZDBhNC00NjQxLWE4NTAtMWI3MWIzYzY5MTgzIiwiaWF0IjoxNjg1NjEyNTgzLCJleHAiOjE2ODgyMDQ1ODN9.gUrQoCttNS2ht8WwpnA--FY69OH4F_DMNB4xt3ob8CA"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "succes": false,
+                    "result": "data not created"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [" LOGIN "],
+        "summary": "This Api for login  ",
+        "description": "it takes email and password and gives id and token ",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "required": true
+                },
+                "password": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "id": "59a1ed7b-d0a4-4641-a850-1b71b3c69183",
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFraGlsZXNoYS5wQGRldnRydXN0LmJpeiIsImlkIjoiNTlhMWVkN2ItZDBhNC00NjQxLWE4NTAtMWI3MWIzYzY5MTgzIiwiaWF0IjoxNjg1NjEyNTgzLCJleHAiOjE2ODgyMDQ1ODN9.gUrQoCttNS2ht8WwpnA--FY69OH4F_DMNB4xt3ob8CA"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "succes": false,
+                    "result": "data is not found"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resetPassword": {
+      "post": {
+        "tags": [" RESET PASSWORD "],
+        "summary": "This Api for reset password  ",
+        "description": "it takes id and password and newPassword and gives you response",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "required": true
+                },
+                "password": {
+                  "type": "string",
+                  "required": true
+                },
+                "newPassword": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "id": "43a09280-db69-445d-81f9-1df4186e4882",
+                    "email": "akhilesh.p@devtrust.biz",
+                    "password": "$2b$10$jMW5CjfrFSHrE3pvLBE.w.nybgh2ESuh/mqG3XJVxJjGJR/6Iv46e",
+                    "isActive": true,
+                    "roleId": "2",
+                    "salt": "$2b$10$jMW5CjfrFSHrE3pvLBE.w.",
+                    "randomToken": "leb6322r",
+                    "createdOn": "2023-05-25T11:20:16.009Z",
+                    "updatedOn": "2023-05-25T11:20:16.009Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "succes": false,
+                    "result": "data is not found"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sendForgetMail": {
+      "post": {
+        "tags": [" FORGET PASSWORD "],
+        "summary": "This Api for send mail for forget password  ",
+        "description": "it takes email and gives you response",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "sucess": true,
+                    "data": "250 2.0.0 OK  1685616553 g2-20020a17090a128200b0024e4f169931sm1165493pja.2 - gsmtp"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "succes": false,
+                    "result": "data is not found"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/verifyForgetPassword/:token": {
+      "post": {
+        "tags": [" FORGET PASSWORD "],
+        "summary": "This Api for send mail for forget password  ",
+        "description": "it takes email and gives you response",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "params",
+            "description": "Description of your parameter",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "id": "43a09280-db69-445d-81f9-1df4186e4882",
+                    "email": "akhilesh.p@devtrust.biz",
+                    "password": "$2b$10$jMW5CjfrFSHrE3pvLBE.w.RplGhUei8.kLEl1BhW3Q8Fe8S1ASY1W",
+                    "isActive": true,
+                    "roleId": "2",
+                    "salt": "$2b$10$jMW5CjfrFSHrE3pvLBE.w.",
+                    "randomToken": "leb6322r",
+                    "createdOn": "2023-05-25T11:20:16.009Z",
+                    "updatedOn": "2023-05-25T11:20:16.009Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "succes": false,
+                    "result": "data is not found"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "tags": [" PROFILE "],
+        "summary": "This Api for profile of user",
+        "description": "This api gives profile data this is protected api so please provide the Bearer token",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "id": "e07c2a03-8997-46b4-8402-52987b7b5d7c",
+                    "email": "devtrust@biz.com",
+                    "isActive": false,
+                    "roleId": "1",
+                    "randomToken": null,
+                    "createdOn": "2023-05-22T13:36:12.835Z",
+                    "updatedOn": "2023-05-22T13:36:12.835Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "succes": false,
+                    "result": "data is not found"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

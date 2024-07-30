@@ -1,0 +1,103 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "IVR CALLING PROGRAM",
+    "description": "api-docs"
+  },
+
+  "schemes": ["https", "http"],
+
+  "host": "ivr-microservice-api.devtrust.biz",
+
+  "basepath": "/",
+  "tags": [
+    {
+      "name": "IVR Calling",
+      "description": "end point"
+    }
+  ],
+
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "API-DOCS "
+    }
+  },
+  "security": [
+    {
+      "Authorization": []
+    }
+  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/createRole": {
+      "post": {
+        "tags": [" ROLE "],
+        "summary": "This Api for create Role  ",
+        "description": "it takes role id and role name  and gives response ",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ROLE_ID": {
+                  "type": "string",
+                  "required": true
+                },
+                "ROLE_NAME": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "success": true,
+                    "data": {
+                      "ROLE_ID": "3",
+                      "ROLE_NAME": "user",
+                      "id": "f64709f7-5778-4fa0-850d-e22fd32cd58d",
+                      "createdOn": "2023-06-01T11:23:01.368Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "example": {
+                    "succes": false,
+                    "result": "data is not found"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

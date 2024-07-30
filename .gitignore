@@ -1,0 +1,6 @@
+.DS_Store
+**/.DS_Store
+**/node_modules
+**/db
+**/fe_services/src/public/upload/*
+package-lock.json
